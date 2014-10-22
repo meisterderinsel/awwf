@@ -1,4 +1,4 @@
 awwf
 ====
 
-test out github with a demo project
+Testing out github with a demo project.
