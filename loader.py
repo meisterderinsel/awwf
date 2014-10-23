@@ -10,6 +10,8 @@ class Loader:
 		cls.loaders.append(cls)
 	@classmethod
 	def competent(self,url):
+		'''return True if you feel competent for this url
+		Must be implemented by every subclass.'''
 		pass
 	@classmethod
 	def find_loader(cls,url):
@@ -20,7 +22,10 @@ class Loader:
 		self.url = url
 		self.file = file
 		self.command = None
-	def check_out(self): #return True iff everything went good
+	def check_out(self):
+		'''do some stuff to retrieve the media file(s).
+		Fill the "command"-variable and return True iff everything went good. Don't execute anything yet.
+		Must be implemented by every subclass.'''
 		pass
 	def print_command(self):
 		print("Calling: \"%s\"" % " ".join(self.command))
