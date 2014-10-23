@@ -13,10 +13,13 @@ class ArteMediathekLoader(Loader):
 		with urllib.request.urlopen(config) as stream:
 			text = stream.read().decode()
 		j = json.loads(text)
-		try:
-			j = j["videoJsonPlayer"]["VSR"]["RTMP_SQ"]
-		except KeyError:
-			j = j["videoJsonPlayer"]["VSR"]["RTMP_SQ_1"]
+		j = j["videoJsonPlayer"]["VSR"]
+		if "RTMP_SQ" in j:
+			j = j["RTMP_SQ"]
+		elif "RTMP_SQ_1" in j:
+			j = j["RTMP_SQ_1"]
+		else:
+			return False
 		
 		r = j["streamer"]
 		y = "mp4:" + j["url"]
