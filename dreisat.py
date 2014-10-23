@@ -22,7 +22,5 @@ class DreisatLoader(Loader):
 
 
 
-
 DreisatLoader.register()
-
 
